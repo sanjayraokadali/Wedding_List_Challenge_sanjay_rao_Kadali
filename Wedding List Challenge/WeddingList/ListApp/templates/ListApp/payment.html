@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "ListApp/base.html" %}
+{% load static %}
+
+{% block body_block %}
+<h2>Payment page</h2>
+
+<form class="" action="{% url 'ListApp:thankyou' %}" method="post">
+  {% csrf_token %}
+
+
+  <div class="alert alert-warning" role="alert">
+    {% for counter in list %}
+      {% for item in gift %}
+
+        {% if counter.count != 0 and counter.item_id == item.item_id %}
+          <hr>
+          <h4 class="alert-heading">{{ item.name }}</h4>
+          <h4>Quantity : {{ counter.count }}</h4>
+          <h6> Price : {{ item.price }}</h6>
+
+        {% endif %}
+
+      {% endfor %}
+    {% endfor %}
+    <div class="card">
+      <div class="card-body">
+
+
+        <input type="submit" class="btn btn-outline-dark" name="paybutton" value="Pay">
+
+      </div>
+
+    </div>
+
+  </div>
+</form>
+
+
+{% endblock %}

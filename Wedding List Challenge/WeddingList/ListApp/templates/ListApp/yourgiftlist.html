@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends "ListApp/base.html" %}
+{% load static %}
+
+{% block body_block %}
+
+  <h3>Gift List</h3>
+  <form action="{% url 'ListApp:payment' %}" method="post">
+    {% csrf_token %}
+
+    {% for item in gift %}
+      {% for count in counter %}
+        {% if item.item_id == count.item_id %}
+          {% if count.count != 0 %}
+            <div class="card {{ item.item_id }}">
+              <div class="card-body">
+                <p>{{ item.name }} : {{ count.count }}</p>
+                <button type="button" class="btn btn-outline-danger" id="{{ item.item_id }}" name="button">Remove Item</button>
+                <input type="hidden" name="{{ item.item_id }}" class="{{ item.item_id }}" value="{{ item.item_id }}">
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+    {% endfor %}
+
+    <input type="submit" class="btn btn-outline-primary"  name="" value="Go to Payments">
+    </form>
+
+  <script type="text/javascript" src="{% static 'js/giftlist.js' %}">
+
+  </script>
+
+
+{% endblock %}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% extends "ListApp/base.html" %}
+{% load static %}
+
+{% block body_block %}
+
+  <style media="screen">
+    p{
+      font-style: italic;
+    }
+  </style>
+
+
+  <h2>Gift Items</h2>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Tea Pot £47</h5>
+      <p>by Le Creuset</p>
+      <button type="button"  class="btn btn-warning add_teapot" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_teapot" name="button">-</button>
+      <p class="tea_pot_count"> </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Cast Iron Casserole £210</h5>
+      <p>Volcanic <br> Oval  - 25 cm by Le Creuset</p>
+      <button type="button"  class="btn btn-warning add_casserole" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_casserole" name="button">-</button>
+      <p class="casserole_count"> </p>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Gordon Ramsey Maze £85</h5>
+      <p>White <br> 12 Piece Set</p>
+      <button type="button"  class="btn btn-warning add_gordon" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_gordon" name="button">-</button>
+      <p class="gordon_count"> </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">9-speed Hand Mixer ££99.99</h5>
+      <p>Almond Cream <br> by KITCHENAID </p>
+      <button type="button"  class="btn btn-warning add_ninespeed" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_ninespeed" name="button">-</button>
+      <p class="ninespeed_count"> </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Mini Stand Mixer £399</h5>
+      <p>Empire Red <br> by KITCHENAID </p>
+      <button type="button"  class="btn btn-warning add_mini" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_mini" name="button">-</button>
+      <p class="mini_count"> </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">50's Style Stand Mixer £449</h5>
+      <p>Full-Colour White <br> by SMEG SMALL APPLIANCES </p>
+      <button type="button"  class="btn btn-warning add_stand" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_stand" name="button">-</button>
+      <p class="stand_count"> </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">50's Style Stand Mixer £449.99</h5>
+      <p>Black <br> by SMEG SMALL APPLIANCES </p>
+      <button type="button"  class="btn btn-warning add_blackstand" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_blackstand" name="button">-</button>
+      <p class="blackstand_count"> </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Polka Bedding Set £105</h5>
+      <p>King, Silver <br> by BEAU LIVING  </p>
+      <button type="button"  class="btn btn-warning add_polka" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_polka" name="button">-</button>
+      <p class="polka_count"> </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Paignton Bedding Set £105</h5>
+      <p> King, White <br> by BEAU LIVING </p>
+      <button type="button"  class="btn btn-warning add_paignton" name="button">+</button>
+
+      <button type="button" class="btn btn-danger remove_paignton" name="button">-</button>
+      <p class="paignton_count"> </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Original Kettle E-5710 Charcoal Barbeque- 57cm £199.99</h5>
+      <p>Black <br> by WEBER GRILLS </p>
+      <button type="button"  class="btn btn-warning add_kettle" name="button">+</button>
+      <button type="button" class="btn btn-danger remove_kettle" name="button">-</button>
+      <p class="kettle_count"> </p>
+    </div>
+  </div>
+
+
+  <form class="card" action="{% url 'ListApp:giftlist' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary go_list" value="Go to Gift List">
+    <button type="button" class="btn btn-warning" name='final-bttn' id="final_bttn">Finish</button>
+    <input type="hidden" id="finaltea" name="tea"  value="">
+
+    <input type="hidden" name="casserole" id="finalcasserole" value="">
+
+    <input type="hidden" name="gordon" id="finalgordon" value="">
+
+    <input type="hidden" name="ninespeed" id="finalninespeed" value="">
+
+    <input type="hidden" name="mini" id="finalmini" value="">
+
+    <input type="hidden" name="stand" id="finalstand" value="">
+
+    <input type="hidden" name="blackstand" id="finalblackstand" value="">
+
+    <input type="hidden" name="polka" id="finalpolka" value="">
+
+    <input type="hidden" name="paignton" id="finalpaignton" value="">
+
+    <input type="hidden" name="kettle" id="finalkettle" value="">
+
+
+
+
+
+  <script src="{% static "js/giftitem.js" %}"  type="text/javascript">
+
+  </script>
+  </form>
+
+
+
+
+  {% endblock %}
